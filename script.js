@@ -1,9 +1,11 @@
+// first make a function to get computer input, by randomly pick from an array
 function getComputerChoice() {
   const choices = ["rock", "paper", "scissors"];
   const randomIndex = Math.floor(Math.random() * choices.length);
   return choices[randomIndex];
 }
 
+// second input user choice base on prompt
 function getHumanChoice() {
   let humanInput = prompt("Rock, Paper, or Scissors?").toLowerCase();
 
@@ -12,6 +14,7 @@ function getHumanChoice() {
 
 console.log(getHumanChoice());
 
+// third make a function to play a round that determines and logic of the game
 function playRound(humanChoice, computerChoice) {
   if (humanChoice === computerChoice) {
     console.log(`It's a tie! You both chose ${humanChoice}`);
@@ -29,24 +32,29 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
+// take inputs and play a round
 const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
+// execute the round
 playRound(humanSelection, computerSelection);
 
+// fivth make a function to play game
 function playGame() {
+  // create score and round
   let humanScore = 0;
   let computerScore = 0;
   const rounds = 5;
 
+  // loop for 5 round and get the input
   for (let i = 0; i < rounds; i++) {
     const humanSelection = getHumanChoice();
     const computerSelection = getComputerChoice();
     const result = playRound(humanSelection, computerSelection);
 
-    if (result === "You win!") {
+    if (result === "win") {
       humanScore++;
-    } else if (result === "You lose!") {
+    } else if (result === "lose") {
       computerScore++;
     }
   }
